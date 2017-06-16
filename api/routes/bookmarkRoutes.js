@@ -12,4 +12,7 @@ module.exports = function(app) {
 		.get(bookmark.read_a_bookmark)
 		.put(bookmark.update_a_bookmark)
 		.delete(bookmark.delete_a_bookmark);
+
+	app.route('/bookmarks/tags/:tagId')
+		.get(bookmark.filter_by_id);
 };

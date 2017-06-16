@@ -7,7 +7,7 @@ exports.list_all_bookmark = function(req, res) {
   Bookmark.find({}, function(err, bookmark) {
     if (err)
       res.send(err);
-    res.json(bookmark);
+    res.status(200).send(bookmark);
   });
 };
 
@@ -17,7 +17,7 @@ exports.create_a_bookmark = function(req, res) {
   new_bookmark.save(function(err, bookmark) {
     if (err)
       res.send(err);
-    res.json(bookmark);
+    res.status(200).send(bookmark);
   });
 };
 
@@ -25,6 +25,9 @@ exports.read_a_bookmark = function(req, res) {
   Bookmark.findById(req.params.bookmarkId, function(err, bookmark) {
     if (err)
       res.send(err);
+    if(bookmark == null){
+      res.status(404).send({});
+    }
     res.json(bookmark);
   });
 };
@@ -45,5 +48,14 @@ exports.delete_a_bookmark = function(req, res) {
     if (err)
       res.send(err);
     res.json({ message: 'Bookmark successfully deleted' });
+  });
+};
+
+
+exports.filter_by_id = function(req, res) {
+  Bookmark.find({ tags: req.params.tagId }, function(err, bookmark) {
+    if (err)
+      res.send(err);
+    res.json(bookmark);
   });
 };

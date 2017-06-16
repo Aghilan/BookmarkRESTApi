@@ -5,20 +5,26 @@ var express = require('express'),
   Bookmark = require('./api/models/bookmarkModel'),
   bodyParser = require('body-parser');
 
+var cors = require('cors')
+
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/Bookmarkdb');
 
+app.use(cors())
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
+
 var routes = require('./api/routes/bookmarkRoutes');
 routes(app);
 
-app.use(function(req, res) {
-  res.status(404).send({url: req.originalUrl + ' not found'})
-});
+// app.options(function(req, res) {
+//   res.header("Access-Control-Allow-Origin", "*");
+//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+//   res.status(200).send({});
+// });
 
 app.listen(port);
 
