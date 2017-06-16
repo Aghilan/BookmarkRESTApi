@@ -1,0 +1,28 @@
+{
+  "name": "Bookmark",
+  "version": "1.0.0",
+  "description": "RESTful bookmarkAPI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aghilan/BookmarkApp.git"
+  },
+  "keywords": [
+    "RESTful",
+    "API",
+    "Bookmark"
+  ],
+  "author": "Aghilan Parmasivam",
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "mongoose": "^4.7.2"
+  }
+}
