@@ -4,7 +4,7 @@ module.exports = function(app) {
 	var bookmark = require('../controllers/bookmarkController');
 	var user = require('../controllers/userController')
 	// todoList Routes
-	app.route('/bookmarks')
+	app.route('/users/:userId/bookmarks')
 		.get(bookmark.list_all_bookmark)
 		.post(bookmark.create_a_bookmark);
 
@@ -13,7 +13,7 @@ module.exports = function(app) {
 		.put(bookmark.update_a_bookmark)
 		.delete(bookmark.delete_a_bookmark);
 
-	app.route('/bookmarks/tags/:tagId')
+	app.route('/users/:userId/bookmarks/tags/:tagId')
 		.get(bookmark.filter_by_id);
 
 

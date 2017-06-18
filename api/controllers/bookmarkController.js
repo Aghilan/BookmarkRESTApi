@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
     Bookmark = mongoose.model('Bookmark');
 
 exports.list_all_bookmark = function(req, res) {
-  Bookmark.find({}, function(err, bookmark) {
+  Bookmark.find({userId : req.params.userId}, function(err, bookmark) {
     if (err)
       res.send(err);
     res.status(200).send(bookmark);
@@ -57,11 +57,12 @@ exports.delete_a_bookmark = function(req, res) {
 
 exports.filter_by_id = function(req, res) {
   var search_term = req.params.tagId;
+  var username= req.params.userId;
   var query = { tags:{$regex: search_term}};
   if (search_term === '*'){
     query= {}
   }
-  Bookmark.find(query, function(err, bookmark) {
+  Bookmark.find(Object.assign(query, {userId: username}), function(err, bookmark) {
     if (err)
       res.send(err);
     console.log(bookmark)

@@ -22,6 +22,10 @@ var BookmarkSchema = new Schema({
       type: String,
     }],
     default: ['general']
+  },
+  userId: {
+    type: String,
+    Required: 'Kindly enter your userID'
   }
 });
 
