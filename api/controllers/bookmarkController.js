@@ -34,11 +34,12 @@ exports.read_a_bookmark = function(req, res) {
 
 exports.update_a_bookmark = function(req, res) {
   console.log(req.params.bookmarkId);
+  var bookmarkId = req.params.bookmarkId || ''
   console.log(req.body);
-  Bookmark.findOneAndUpdate({_id: req.params.bookmarkId}, req.body, {new: true}, function(err, bookmark) {
+  Bookmark.findOneAndUpdate({_id: bookmarkId}, req.body, {new: true}, function(err, bookmark) {
     if (err)
       res.send(err);
-      console.log(bookmark)
+    console.log(bookmark)
     res.json(bookmark);
   });
 };

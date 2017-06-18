@@ -3,6 +3,7 @@ var express = require('express'),
   port = process.env.PORT || 3000,
   mongoose = require('mongoose'),
   Bookmark = require('./api/models/bookmarkModel'),
+  User = require('./api/models/userModel'),
   bodyParser = require('body-parser');
 
 var cors = require('cors')
