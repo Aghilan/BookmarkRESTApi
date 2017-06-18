@@ -24,11 +24,20 @@ exports.authenticate_user = function(req, res) {
 };
 
 exports.register_user = function(req, res) {
-  var new_user = new User(req.body);
-  new_user.save(function(err, user) {
+  User.find({ username : req.body.username } , function(err, user) {
     if (err)
       res.send(err);
-    res.status(200).send(user);
+    if (user.length!=0) {
+      res.status(401).send();
+    }
+    else{
+      var new_user = new User(req.body);
+      new_user.save(function(err, user) {
+        if (err)
+          res.send(err);
+        res.status(200).send(user);
+      });
+    }
   });
 };
 
