@@ -56,7 +56,12 @@ exports.delete_a_bookmark = function(req, res) {
 
 
 exports.filter_by_id = function(req, res) {
-  Bookmark.find({ tags: {$regex: req.params.tagId} }, function(err, bookmark) {
+  var search_term = req.params.tagId;
+  var query = { tags:{$regex: search_term}};
+  if (search_term === '*'){
+    query= {}
+  }
+  Bookmark.find(query, function(err, bookmark) {
     if (err)
       res.send(err);
     console.log(bookmark)
