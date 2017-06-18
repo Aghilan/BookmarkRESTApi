@@ -1,6 +1,5 @@
 'use strict';
 
-
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
@@ -28,6 +27,5 @@ var BookmarkSchema = new Schema({
     Required: 'Kindly enter your userID'
   }
 });
-
 
 module.exports = mongoose.model('Bookmark', BookmarkSchema);

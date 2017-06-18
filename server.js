@@ -16,16 +16,8 @@ app.use(cors())
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-
-
 var routes = require('./api/routes/bookmarkRoutes');
 routes(app);
-
-// app.options(function(req, res) {
-//   res.header("Access-Control-Allow-Origin", "*");
-//   res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-//   res.status(200).send({});
-// });
 
 app.listen(port);
 
